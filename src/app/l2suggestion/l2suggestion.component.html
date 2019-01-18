@@ -1,0 +1,8 @@
+<mat-form-field [formGroup]="service.form">
+  <input type="text" placeholder="Suggest L2 Pannel" matInput formControlName="suggestL2" [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="suggestdisplayFn">
+    <mat-option *ngFor="let suggest of filteredOptions | async" [value]="suggest">
+      {{suggest.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

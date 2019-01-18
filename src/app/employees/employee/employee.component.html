@@ -1,0 +1,93 @@
+<form [formGroup]="service.form" class="normal-form">
+  <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <!--<input type="hidden" formControl="$key">-->
+        <mat-form-field>
+          <input formControlName="fullName" matInput placeholder="Full Name*">
+          <mat-error>Name is <strong>required</strong></mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="priority" placeholder="Priority">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let priority of priorities">
+              <mat-option value="{{priority.id}}">{{priority.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+
+        <app-projects></app-projects>
+
+        <mat-form-field>
+          <input  formControlName="loggedDate" matInput [matDatepicker]="picker" placeholder="Logged Date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+          <app-l1suggestion></app-l1suggestion>
+
+        <mat-form-field>
+          <mat-select formControlName="netPosition" placeholder="Net Open Position">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let position of positions">
+              <mat-option value="{{position.id}}">{{position.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="projectManager" matInput placeholder="Project Manager">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="level" placeholder="Level">
+            <mat-option>None</mat-option>
+            <ng-container *ngFor="let level of levels">
+              <mat-option value="{{level.id}}">{{level.value}}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+      <mat-form-field>
+        <input formControlName="requisition" matInput placeholder="Current requisition">
+        <mat-error>Requisition is <strong>required</strong></mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select formControlName="location" placeholder="Location">
+          <mat-option>None</mat-option>
+          <ng-container *ngFor="let location of locations">
+            <mat-option value="{{location.id}}">{{location.value}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="jobDescription" matInput placeholder="Job Description">
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="expectedDate" matInput [matDatepicker]="picker1" placeholder="Expected Date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <app-l2suggestion></app-l2suggestion>
+
+        <mat-form-field>
+        <mat-select formControlName="practice" placeholder="Practice">
+          <mat-option>None</mat-option>
+          <ng-container *ngFor="let practice of practices">
+            <mat-option value="{{practice.id}}">{{practice.value}}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input formControlName="additionalRemark" matInput placeholder="Additional Remark">
+      </mat-form-field>
+        <div class="button-row">
+          <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+          <button mat-raised-button color="warn">Clear</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
