@@ -7,8 +7,9 @@ import {EmployeeService} from '../../shared/employee.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  constructor(public service: EmployeeService) { }
 
-  constructor(private service: EmployeeService) { }
+  userValues;
 
   locations = [
     {id: 1, value: 'Indore'},
@@ -56,4 +57,12 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
   }
 
+  myClick() {
+    debugger;
+    this.userValues = this.service.form.value
+    console.log(typeof this.userValues)
+    this.userValues = JSON.stringify(this.userValues) 
+    console.log(typeof this.userValues)
+    console.log(this.userValues)
+  }
 }
